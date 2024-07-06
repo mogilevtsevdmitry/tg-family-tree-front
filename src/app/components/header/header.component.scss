@@ -1,0 +1,14 @@
+header {
+  height: 4rem;
+  background-color: #a9fbb3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+
+  .menu {
+    button {
+        margin: 0 0.2rem;
+    }
+  }
+}
