@@ -1,8 +1,32 @@
 footer {
+  position: relative;
+  height: 68px;
+
+  .menu {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    // filter: brightness(0) saturate(100%) invert(18%) sepia(12%) saturate(1436%) hue-rotate(172deg) brightness(89%) contrast(95%);
+  }
+
+  .buttons {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 6rem;
-    background-color: aquamarine;
-    padding: 0 1rem;
+    padding: 0 2rem;
+    height: 100%;
+    z-index: 99999;
+
+    .tree {
+      position: absolute;
+      left: calc(50% - 2rem);
+      bottom: 2rem;
+    }
+  }
+
+  .tree-icon {
+    width: 100%;
+    filter: invert(48%) sepia(82%) saturate(336%) hue-rotate(73deg) brightness(104%) contrast(88%);
+  }
 }

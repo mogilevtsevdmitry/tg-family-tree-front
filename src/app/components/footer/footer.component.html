@@ -1,13 +1,12 @@
 <footer class="footer">
-  <div class="icon-left">
-    <mat-icon fontIcon="widgets"></mat-icon>
-  </div>
-  <div class="center-icon">
-    <div class="circle">
-      <mat-icon fontIcon="nature"></mat-icon>
+  <img class="menu" src="/svg/menu.svg" alt="Menu" />
+  <div class="buttons">
+    <app-circle-button icon="home" />
+    <div class="tree">
+      <app-circle-button size="xl">
+        <img class="tree-icon" src="/svg/tree.svg" alt="Tree">
+      </app-circle-button>
     </div>
-  </div>
-  <div class="icon-right">
-    <mat-icon fontIcon="person"></mat-icon>
+    <app-circle-button icon="person"/>
   </div>
 </footer>

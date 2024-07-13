@@ -1,24 +1,33 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+app-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 600ms linear;
+  background: rgba(233, 228, 228, 0.6);
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
   }
-  
-//   app-header {
-//     height: 4rem;
-//     background-color: #f8f9fa; /* Можно изменить цвет по желанию */
-//   }
-  
-  app-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff; /* Можно изменить цвет по желанию */
-  }
-  
-//   app-footer {
-//     height: 6rem;
-//     background-color: #f8f9fa; /* Можно изменить цвет по желанию */
-//   }
-  
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+}

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  private _title = 'Familytree';
+  private _title = 'FamilyTree';
   @Input() inputTitle = null;
 
   get title() {

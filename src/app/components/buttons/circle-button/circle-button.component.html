@@ -1,0 +1,21 @@
+<button
+  class="btn ripple"
+  [style]="{
+  height: btnSize,
+  width: btnSize,
+}"
+>
+  <div *ngIf="!!icon">
+    <mat-icon
+      [style]="{
+      width: iconSize,
+      height: iconSize,
+      'font-size': iconSize,
+  }"
+      >{{ icon }}</mat-icon
+    >
+  </div>
+  <div *ngIf="!icon || !icon.length">
+    <ng-content></ng-content>
+  </div>
+</button>
