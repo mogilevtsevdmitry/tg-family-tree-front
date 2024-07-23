@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class CircleButtonComponent {
   @Input() icon = '';
   @Input() size: 's' | 'm' | 'xl' = 'm';
-  @Input() route = ''
+  @Input() route = '';
 
   constructor(private readonly router: Router) {}
 
