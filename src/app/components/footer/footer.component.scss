@@ -1,32 +1,75 @@
-footer {
-  position: relative;
-  height: 68px;
+$height: 5rem;
+$bgc: hsl(152, 25%, 25%);
+$root_color: #fff;
 
-  .menu {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    z-index: -1;
-    // filter: brightness(0) saturate(100%) invert(18%) sepia(12%) saturate(1436%) hue-rotate(172deg) brightness(89%) contrast(95%);
-  }
+footer {
+  height: $height;
+  background-color: $bgc;
+  position: relative;
 
   .buttons {
+    height: 100%;
+    justify-content: space-between;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0 2rem;
-    height: 100%;
-    z-index: 99999;
+  }
 
-    .tree {
-      position: absolute;
-      left: calc(50% - 2rem);
-      bottom: 2rem;
+  .layer-2 {
+    position: absolute;
+    width: $height + 1rem;
+    height: $height + 1rem;
+    background-color: $root_color;
+    border-radius: 50%;
+    top: calc(-1 * $height / 2);
+    left: calc(50% - ($height + 1rem) / 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .tree-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .tree-icon {
+        width: 100%;
+        height: auto;
+        max-width: 5rem;
+      }
     }
   }
 
-  .tree-icon {
-    width: 100%;
-    filter: invert(48%) sepia(82%) saturate(336%) hue-rotate(73deg) brightness(104%) contrast(88%);
+  .layer-3 {
+    position: absolute;
+    top: 0;
+    width: calc($height * 0.1375);
+    height: calc($height * 0.1125);
+    background-color: $root_color;
+  }
+
+  .layer-3-1 {
+    left: calc(100% / 2 - $height * 0.1375 - ($height + 1rem) / 2);
+  }
+
+  .layer-3-2 {
+    right: calc(100% / 2 - $height * 0.1375 - ($height + 1rem) / 2);
+  }
+
+  .layer-4 {
+    position: absolute;
+    top: 0;
+    background-color: $bgc;
+    width: calc($height * 0.2875);
+    height: calc($height * 0.2875);
+    border-radius: 50%;
+  }
+
+  .layer-4-1 {
+    left: calc(100% / 2 - $height * 0.2875 - ($height + 1rem) / 2);
+  }
+
+  .layer-4-2 {
+    right: calc(100% / 2 - $height * 0.2875 - ($height + 1rem) / 2);
   }
 }

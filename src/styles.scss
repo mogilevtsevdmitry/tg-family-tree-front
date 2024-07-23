@@ -39,11 +39,11 @@ $front-theme: mat.define-theme(
 
 html,
 body {
-  height: 100%;
-}
-body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: var(--tg-theme-bg-color);
-  color: var(--tg-theme-text-color);
+  background-color: #0e1621; // var(--tg-theme-bg-color);
+  color: #f5f5f5; // var(--tg-theme-text-color);
+  height: 100vh;
+  background-color: #fff;
+  width: 100%;
 }

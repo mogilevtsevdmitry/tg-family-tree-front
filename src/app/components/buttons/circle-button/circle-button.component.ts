@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-circle-button',
@@ -13,6 +14,9 @@ import { MatIconModule } from '@angular/material/icon';
 export class CircleButtonComponent {
   @Input() icon = '';
   @Input() size: 's' | 'm' | 'xl' = 'm';
+  @Input() route = ''
+
+  constructor(private readonly router: Router) {}
 
   get iconSize() {
     switch (this.size) {
@@ -31,7 +35,11 @@ export class CircleButtonComponent {
       case 'm':
         return '3rem';
       case 'xl':
-        return '4rem';
+        return '5rem';
     }
+  }
+
+  click() {
+    this.router.navigate([this.route]);
   }
 }
