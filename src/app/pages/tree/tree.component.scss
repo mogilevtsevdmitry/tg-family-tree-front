@@ -1,4 +1,4 @@
-app-content {
+app-tree {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -23,4 +23,26 @@ app-content {
 button {
   position: relative;
   overflow: hidden;
+}
+
+#board-container {
+  width: calc(100vw - 5rem);
+  height: calc(100vh - 5rem);
+  overflow: hidden;
+  position: relative;
+}
+
+#board {
+  width: 2000px; /* Установите достаточный размер для вашей "доски" */
+  height: 2000px; /* Установите достаточный размер для вашей "доски" */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+app-tree-item {
+  position: absolute;
+  /* Установите позицию для каждого элемента */
+  top: 100px;
+  left: 100px;
 }

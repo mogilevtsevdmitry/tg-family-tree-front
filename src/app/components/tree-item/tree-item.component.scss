@@ -1,0 +1,42 @@
+.example-card.centered-card {
+    max-width: 20%; /* 1/5 ширины экрана */
+    margin: 0 auto; /* Центрирование карточки по горизонтали */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none; /* Убираем рамки */
+    box-shadow: none; /* Убираем тени */
+    font-size: 0.8em;
+  }
+  
+  .example-card .card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .example-card .example-header-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ccc;
+    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+    background-size: cover;
+    margin-bottom: 0.5rem;
+    border: 3px solid #00796b; /* Круглая рамка вокруг изображения */
+  }
+  
+  .example-card mat-card-title,
+  .example-card mat-card-subtitle {
+    text-align: center;
+  }
+
+  .example-card mat-card-title {
+    font-size: 1.3em;
+  }
+
+  .example-card mat-card-subtitle {
+    font-size: 1em;
+  }
+  
