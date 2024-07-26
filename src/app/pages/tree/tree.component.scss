@@ -33,16 +33,31 @@ button {
 }
 
 #board {
-  width: 2000px; /* Установите достаточный размер для вашей "доски" */
-  height: 2000px; /* Установите достаточный размер для вашей "доски" */
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative; /* Изменено на relative */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 app-tree-item {
   position: absolute;
-  /* Установите позицию для каждого элемента */
-  top: 100px;
-  left: 100px;
+  /* Дополнительные стили */
+}
+
+#fit-button {
+  position: absolute;
+  bottom: 10rem;
+  right: 2rem;
+  z-index: 10;
+}
+
+.connection-line {
+  position: absolute;
+  background-color: #000;
+  height: 2px;
+  width: 100%;
+  transform-origin: 0 0;
 }

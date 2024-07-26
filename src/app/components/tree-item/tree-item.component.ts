@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { ITreeItem, KinshipEnum } from '../../pages/tree/interfaces';
 
 @Component({
   selector: 'app-tree-item',
@@ -9,5 +10,10 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './tree-item.component.scss'
 })
 export class TreeItemComponent {
-
+  @Input() name: string = ''
+  @Input() avatar: string = ''
+  @Input() alive: boolean = true
+  @Input() birthday: Date | null = null
+  @Input() kinship: KinshipEnum | null = null
+  @Input() relations: ITreeItem[] = []
 }

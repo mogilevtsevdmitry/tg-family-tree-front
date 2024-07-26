@@ -1,11 +1,37 @@
 <app-content>
-    <div id="board-container">
-      <div id="board">
-        <!-- Здесь будут ваши элементы -->
-        <app-tree-item></app-tree-item>
-        <app-tree-item></app-tree-item>
-        <!-- Добавьте столько элементов, сколько необходимо -->
-      </div>
+  <div id="board-container">
+    <div id="board">
+      <ng-container
+        *ngTemplateOutlet="renderTree; context: { items: [treeData], level: 0 }"
+      ></ng-container>
     </div>
-  </app-content>
-  
+  </div>
+  <app-circle-button
+    icon="{{ screen }}"
+    id="fit-button"
+    (click)="fitToScreen()"
+  ></app-circle-button>
+
+  <ng-template #renderTree let-items="items" let-level="level">
+    <ng-container *ngFor="let item of items">
+      <app-tree-item
+        [attr.data-id]="item.id"
+        [id]="item.id"
+        [name]="item.name"
+        [avatar]="item.avatar"
+        [alive]="item.alive"
+        [birthday]="item.birthday"
+        [kinship]="item.kinship"
+        [relations]="item.relations"
+        [style.top]="getVerticalPosition(level)"
+        [style.left]="getHorizontalPosition(level, item)"
+      ></app-tree-item>
+      <ng-container
+        *ngTemplateOutlet="
+          renderTree;
+          context: { items: item.relations, level: level + 1 }
+        "
+      ></ng-container>
+    </ng-container>
+  </ng-template>
+</app-content>
