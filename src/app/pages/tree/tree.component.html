@@ -1,4 +1,4 @@
-<app-content>
+<!-- <app-content>
   <div id="board-container">
     <div id="board">
       <ng-container
@@ -34,4 +34,17 @@
       ></ng-container>
     </ng-container>
   </ng-template>
+</app-content> -->
+<app-content>
+  <div id="board-container">
+    <div id="board">
+      <!-- <app-genealogy-tree [items]="[treeData]"></app-genealogy-tree> -->
+       <app-tree-items [treeData]="treeData"></app-tree-items>
+    </div>
+  </div>
+  <app-circle-button
+    icon="{{ screen }}"
+    id="fit-button"
+    (click)="fitToScreen()"
+  ></app-circle-button>
 </app-content>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FamilyComponent } from './family.component';
+import { GenealogyTreeComponent } from './genealogy-tree.component';
 
-describe('FamilyComponent', () => {
-  let component: FamilyComponent;
-  let fixture: ComponentFixture<FamilyComponent>;
+describe('GenealogyTreeComponent', () => {
+  let component: GenealogyTreeComponent;
+  let fixture: ComponentFixture<GenealogyTreeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FamilyComponent]
+      imports: [GenealogyTreeComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FamilyComponent);
+    fixture = TestBed.createComponent(GenealogyTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -41,8 +41,8 @@ html,
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: var(--tg-theme-bg-color);
-  color: var(--tg-theme-text-color);
+  background-color: var(--tg-theme-bg-color, #fff);
+  color: var(--tg-theme-text-color, #101720);
   height: 100vh;
   width: 100%;
 }

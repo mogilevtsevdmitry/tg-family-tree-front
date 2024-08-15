@@ -1,0 +1,10 @@
+<div class="family-tree-list" *ngIf="sortedTreeData | async as data">
+  <ng-container *ngIf="data">
+    <app-tree-item [item]="data"></app-tree-item>
+    <div *ngIf="data.children && data.children.length > 0" class="children">
+      <ng-container *ngFor="let child of data.children">
+        <app-tree-item [item]="child"></app-tree-item>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

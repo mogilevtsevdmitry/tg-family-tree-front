@@ -1,0 +1,9 @@
+.family-tree-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .family-tree-item {
+    margin: 10px;
+  }
+}

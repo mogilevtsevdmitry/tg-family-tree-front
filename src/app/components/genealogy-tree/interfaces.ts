@@ -13,9 +13,10 @@ export enum KinshipEnum {
 export interface ITreeItem {
   id: string;
   name: string;
-  avatar: string;
-  alive: boolean;
-  birthday: Date;
   kinship: KinshipEnum;
-  relations: ITreeItem[];
+  avatar?: string;
+  alive?: boolean;
+  birthday?: Date;
+  children?: ITreeItem[];
+  isVisible?: boolean;
 }

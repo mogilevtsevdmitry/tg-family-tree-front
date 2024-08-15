@@ -24,7 +24,7 @@
     background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
     background-size: cover;
     margin-bottom: 0.5rem;
-    border: 3px solid #00796b; /* Круглая рамка вокруг изображения */
+    border: 3px solid #00796b;
   }
   
   .example-card mat-card-title,
@@ -34,6 +34,7 @@
 
   .example-card mat-card-title {
     font-size: 1.3em;
+    text-wrap: wrap;
   }
 
   .example-card mat-card-subtitle {

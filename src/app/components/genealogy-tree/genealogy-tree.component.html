@@ -1,0 +1,32 @@
+<!-- genealogy-tree.component.html -->
+<div class="body genealogy-body genealogy-scroll">
+  <div class="genealogy-tree">
+    <ul>
+      <li *ngFor="let item of items" [ngClass]="getMemberClass(item)">
+        <a
+          href="javascript:void(0);"
+          (click)="toggleVisibility($event, item)"
+        >
+          <div class="member-view-box">
+            <div class="member-image">
+              <img *ngIf="item.avatar"
+                [src]="
+                  item.avatar ||
+                  'https://image.flaticon.com/icons/svg/145/145867.svg'
+                "
+                alt="Member"
+              />
+              <mat-icon>person</mat-icon>
+              <div class="member-details">
+                <h3>{{ item.name }}</h3>
+              </div>
+            </div>
+          </div>
+        </a>
+        <ul *ngIf="item.isVisible && item.children && item.children.length">
+          <app-genealogy-tree [items]="item.children"></app-genealogy-tree>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

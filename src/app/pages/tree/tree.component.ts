@@ -1,23 +1,24 @@
+import { BehaviorSubject } from 'rxjs';
 import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
-  HostListener,
-  Input,
   ElementRef,
-  ViewChildren,
+  Input,
   QueryList,
+  ViewChildren,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import panzoom from 'panzoom';
 
+import { CommonModule } from '@angular/common';
+import { CircleButtonComponent } from '../../components/buttons/circle-button/circle-button.component';
 import { ContentComponent } from '../../components/content/content.component';
 import { FooterComponent } from '../../components/footer/footer.component';
-import { TreeItemComponent } from '../../components/tree-item/tree-item.component';
-import { CircleButtonComponent } from '../../components/buttons/circle-button/circle-button.component';
+import { GenealogyTreeComponent } from '../../components/genealogy-tree/genealogy-tree.component';
+import { ITreeItem } from '../../components/genealogy-tree/interfaces';
 import { treeItems } from './data';
-import { ITreeItem } from './interfaces';
-import { CommonModule } from '@angular/common';
+import { TreeItemsComponent } from '../../components/tree-items/tree-items.component';
 
 @Component({
   selector: 'app-tree',
@@ -26,16 +27,16 @@ import { CommonModule } from '@angular/common';
     RouterOutlet,
     FooterComponent,
     ContentComponent,
-    TreeItemComponent,
     CircleButtonComponent,
     CommonModule,
+    GenealogyTreeComponent,
+    TreeItemsComponent,
   ],
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss'],
 })
 export class TreeComponent implements AfterViewInit {
-  @Input() treeData: ITreeItem = treeItems;
-  @ViewChildren(TreeItemComponent, { read: ElementRef })
+  @Input() treeData: BehaviorSubject<ITreeItem> = new BehaviorSubject(treeItems);
   treeItems!: QueryList<ElementRef>;
   private panzoomInstance: any;
   private maxZoom = 1;
@@ -73,9 +74,6 @@ export class TreeComponent implements AfterViewInit {
         this.cdr.detectChanges();
       });
     }
-
-    // Создание линий связей
-    this.createConnections();
   }
 
   fitToScreen() {
@@ -98,78 +96,5 @@ export class TreeComponent implements AfterViewInit {
         );
       }
     }
-  }
-
-  getVerticalPosition(level: number): string {
-    return `${level * 200}px`; // adjust 200px based on the required spacing between levels
-  }
-
-  getHorizontalPosition(level: number, item: ITreeItem): string {
-    // Logic to calculate horizontal position
-    // For simplicity, we'll use the index of the item in its level
-    const index = this.treeData.relations.indexOf(item);
-    return `${index * 200}px`; // adjust 200px based on the required spacing between items
-  }
-
-  createConnections() {
-    this.treeItems.forEach((item) => {
-      const element = item.nativeElement;
-      const parentElement = this.findParentElement(element);
-      if (parentElement) {
-        const line = document.createElement('div');
-        line.className = 'connection-line';
-        document.body.appendChild(line);
-        this.updateLinePosition(line, parentElement, element);
-      }
-    });
-  }
-
-  findParentElement(element: HTMLElement): HTMLElement | null {
-    const elementId = element.getAttribute('data-id');
-    if (!elementId) {
-      return null;
-    }
-
-    // Рекурсивная функция для поиска родителя в структуре данных
-    const findParentInTree = (
-      node: ITreeItem,
-      targetId: string
-    ): ITreeItem | null => {
-      for (const relation of node.relations) {
-        if (relation.id === targetId) {
-          return node;
-        }
-        const found = findParentInTree(relation, targetId);
-        if (found) {
-          return found;
-        }
-      }
-      return null;
-    };
-
-    const parentData = findParentInTree(this.treeData, elementId);
-    if (parentData) {
-      return document.querySelector(`[data-id="${parentData.id}"]`);
-    }
-    return null;
-  }
-
-  updateLinePosition(
-    line: HTMLDivElement,
-    fromElement: HTMLElement,
-    toElement: HTMLElement
-  ) {
-    const fromRect = fromElement.getBoundingClientRect();
-    const toRect = toElement.getBoundingClientRect();
-    const fromX = fromRect.left + fromRect.width / 2;
-    const fromY = fromRect.top + fromRect.height / 2;
-    const toX = toRect.left + toRect.width / 2;
-    const toY = toRect.top + toRect.height / 2;
-    const length = Math.sqrt((toX - fromX) ** 2 + (toY - fromY) ** 2);
-    const angle = (Math.atan2(toY - fromY, toX - fromX) * 180) / Math.PI;
-
-    line.style.width = `${length}px`;
-    line.style.transform = `translate(${fromX}px, ${fromY}px) rotate(${angle}deg)`;
-    line.style.backgroundColor = 'green';
   }
 }
